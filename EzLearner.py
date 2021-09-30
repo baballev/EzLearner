@@ -111,7 +111,7 @@ class TreeDict():  # ToDo: Update, parenthesis handling
 def clean_words(word_path="./words/jap_raw", output_path="./words/clean_jap"):
     # Check for spaces with arrow & comas
     # Clean unicode emojis
-
+    pass
 
 
 
@@ -174,6 +174,12 @@ def save(dic): # Saves config file
 ## MAIN
 
 def play(dic): # Fontion comprenant la boucle principale de jeu
-    pass # ToDo
+    done = False
+    while not done:
+        weight = dic.weight
+        r  = random.randint(weight)
+        word = # TODO: Get Word inFo in by coding method in BTS class
+
+
 
 menu()
