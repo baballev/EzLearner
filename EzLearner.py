@@ -89,6 +89,15 @@ class TreeDict():  # ToDo: Update, parenthesis handling
             if self.weight < 256:
                 pass
             return
+    
+    def get_tree(self, r):
+        if self.length <= 1:
+            return self
+        else:
+            if r <= self.left[0].weight:
+                return self.left[0].get_tree(r)
+            else:
+                return self.right[0].get_tree(r - self.left[0].weight)
 
     def __len__(self):
         return self.length
@@ -171,6 +180,19 @@ def save(dic): # Saves config file
     finally:
         new_config.close()
 
+
+def check(answer, translations):
+    pass
+
+def pronuncication_parser(native_word):  # Return word without pronunciation
+    if "(" in native_word:
+        i = native_word.index("(")
+        return native_word[:i]
+    else:
+        return native_word
+    
+
+
 ## MAIN
 
 def play(dic): # Fontion comprenant la boucle principale de jeu
@@ -178,7 +200,17 @@ def play(dic): # Fontion comprenant la boucle principale de jeu
     while not done:
         weight = dic.weight
         r  = random.randint(weight)
-        word = # TODO: Get Word inFo in by coding method in BTS class
+        tree = dic.get_tree(r)   # TODO: Get Word inFo in by coding method in BTS class
+        word = tree.natie_word
+        translations = tree.translations
+        app.update(word)
+        root.update()
+        answer = input()
+        
+
+        success = None  # ToDo
+
+        tree.update(success=success)
 
 
 
